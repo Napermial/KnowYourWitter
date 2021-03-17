@@ -1,7 +1,7 @@
 import tensorflow.keras as tf
 
 def structure_data()
-    pass
+
 
 def create_model(inputs, outputs):
     return tf.Model(inputs=inputs, outputs=outputs)
