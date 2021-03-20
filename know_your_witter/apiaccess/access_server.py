@@ -2,16 +2,17 @@ import twitter
 
 def connect_to_api(func):
     def wrapper(*args, **kwargs):
-        api = twitter.Api(consumer_key='',
-                  consumer_secret='',
-                  access_token_key='',
-                  access_token_secret='')
+        #api = twitter.Api(consumer_key='',
+        #          consumer_secret='',
+        #          access_token_key='',
+        #          access_token_secret='')
+        api = twitter.NoAuth()
         func(api, *args, **kwargs)
     return wrapper()
 
 @connect_to_api
 def get_tweets_of_user(api, user):
-    user = api.get_user(user)
+    user = api.GetUserTimeline(user)
     return user.get_tweets()
 
 @connect_to_api
@@ -29,5 +30,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    #ddd
