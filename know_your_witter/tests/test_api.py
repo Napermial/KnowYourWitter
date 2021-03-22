@@ -11,6 +11,17 @@ class TestSum(unittest.TestCase):
         tweets = access_server.get_tweets_of_user(mock_twitter, 'testuser')
         self.assertEqual(tweets, mock_twitter.return_value)
 
+  def test_username(self):
+        mock_user = Mock()
+        mock_user.return_value = {'username': 'testuser'}
+        users = access_server.validate_username(mock_user, 'testuser')
+        self.assertEqual(users, mock_user.return_value)
+
+  def test_username_error(self):
+        mock_user = Mock()
+        mock_user.return_value = ValueError
+        users = access_server.validate_username(mock_user, ValueError)
+        self.assertEqual(users, mock_user.return_value)
 
 if __name__ == '__main__':
     unittest.main()
