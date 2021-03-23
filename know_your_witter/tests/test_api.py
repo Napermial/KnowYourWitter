@@ -19,9 +19,10 @@ class TestSum(unittest.TestCase):
 
   def test_username_error(self):
         mock_user = Mock()
-        mock_user.return_value = ValueError
-        users = access_server.validate_username(mock_user, ValueError)
-        self.assertEqual(users, mock_user.return_value)
+        mock_user.return_value = {'username': 'testuser'}
+        users=access_server.validate_username(mock_user, 'testuser')
+        self.assertRaises(users,TypeError)
+
 
 if __name__ == '__main__':
     unittest.main()
