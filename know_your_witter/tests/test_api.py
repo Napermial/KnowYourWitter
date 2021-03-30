@@ -9,7 +9,7 @@ class TestApi(unittest.TestCase):
         mock_twitter = Mock()
         mock_twitter.return_value = {'username': 'testuser', 'statuses': [{'message': 'test message'}]}
         tweets = access_server.get_tweets_of_user(mock_twitter, 'testuser')
-        self.assertEqual(tweets, mock_twitter.return_value)
+        self.assertEqual(mock_twitter.return_value, tweets )
 
     def test_username(self):
         mock_user = Mock()
@@ -22,6 +22,7 @@ class TestApi(unittest.TestCase):
         mock_user.return_value = {'username': 'testuser'}
         users=access_server.validate_username(mock_user, 'testuser')
         self.assertRaises(users,TypeError)
+
 
 
 if __name__ == '__main__':

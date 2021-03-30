@@ -1,20 +1,16 @@
 import tensorflow.keras as tf
 
 
-def structure_data():
-    pass
+class Guesser():
+    def structure_data():
+        pass
 
+    def create_model(inputs, outputs):
+        return tf.Model(inputs=inputs, outputs=outputs)
 
-def create_model(inputs, outputs):
-    return tf.Model(inputs=inputs, outputs=outputs)
-
-
-def generate_new_prediction(model):
-    yield model.predict()
-
-
-def main():
+    def generate_new_prediction(self, model):
+        yield model.predict()
 
 
 if __name__ == '__main__':
-    main()
+    g = Guesser()
