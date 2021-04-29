@@ -1,5 +1,4 @@
-from config import *
-import pandas as pd
+from environment import *
 import tweepy
 import datetime
 
@@ -31,4 +30,4 @@ def get_tweets(keyword):
                 'created_at': created_at}
         output.append(line)
 
-    return pd.DataFrame(output)
+    return output
