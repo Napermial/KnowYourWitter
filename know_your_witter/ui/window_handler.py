@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
-import time
 from threading import Thread
-from background_task import BackgroundTask
 import concurrent.futures
 from know_your_witter.typer import guess
 
