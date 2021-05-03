@@ -1,4 +1,4 @@
-# import tensorflow.keras as tf
+from tensorflow.keras import model as tf
 
 from know_your_witter.apiaccess import api
 
@@ -29,4 +29,4 @@ def guess_personality(username):
 
 
 if __name__ == '__main__':
-    guess_personality("jani")
+    guess_personality("")
