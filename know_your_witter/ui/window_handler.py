@@ -2,12 +2,17 @@ from tkinter import *
 from tkinter.ttk import *
 import time
 from threading import Thread
+import concurrent.futures
+from know_your_witter.typer import guess
 
 
 def create_window():
     def read_username():
         user_name = ent_username.get()
-        # TODO access api
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(guess.guess_personality(user_name))
+            return_value = future.result()
+            print(return_value)
 
     def display_type(type):
         lbl_type["text"] = "Your type is: " + type

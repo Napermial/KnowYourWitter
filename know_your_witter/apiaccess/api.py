@@ -1,11 +1,10 @@
-from environment import *
-import tweepy
+import tweepy, os
 import datetime
 
 
 # Get tweet function, keyword input, related tweets database output
 def get_tweets(keyword):
-    auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
+    auth = tweepy.OAuthHandler(os.getenv("TWITTER_CONSUMER_KEY"), TWITTER_CONSUMER_SECRET)
     auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth, wait_on_rate_limit=True)
 

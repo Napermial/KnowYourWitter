@@ -1,16 +1,32 @@
 import tensorflow.keras as tf
 
+from know_your_witter.apiaccess import api
 
-class Guesser():
-    def structure_data():
+
+def generate_new_prediction(model):
+    yield model.predict()
+
+
+class Guesser:
+    def __init__(self):
+        self.model = self.load_model("this", "that")
+
+    def structure_data(self):
         pass
 
-    def create_model(inputs, outputs):
+    def load_model(self, inputs, outputs):
         return tf.Model(inputs=inputs, outputs=outputs)
 
-    def generate_new_prediction(self, model):
-        yield model.predict()
+    def return_predicted(self):
+        return
 
 
-if __name__ == '__main__':
-    g = Guesser()
+def guess_personality(username):
+    api.get_tweets(username)
+    guesser = Guesser()
+    guesser.structure_data()
+    return "INTP"
+
+# if __name__ == '__main__':
+#     g = Guesser()
+#     g.structure_data()
