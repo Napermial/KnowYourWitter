@@ -16,6 +16,7 @@ class GUI:
         self.progress_bar = Progressbar(master=self.frm_entry, orient=HORIZONTAL, mode='determinate')
         self.btn_typer = Button(master=self.frm_entry, text="Type me", command=self.load)
         self.ent_username = Entry(master=self.frm_entry, width=10)
+        self.predicted_type = None
 
     def prepare_screen(self):
         self.ent_username.grid(row=0, column=0, sticky="e")
@@ -32,19 +33,21 @@ class GUI:
             future = executor.submit(guess.guess_personality(user_name))
             return_value = future.result()
             self.display_type(future.result())
+            self.predicted_type = return_value
             print(return_value)
 
     def display_type(self, type):
         self.lbl_type["text"] = "Your type is: " + type
 
     def load(self):
-        loading = True
-        while loading:
-            for i in range(6):
-                self.progress_bar['value'] = 20 * i
-                self.window.update_idletasks()
-                time.sleep(0.5)
-            loading = False
+        def parallel_load():
+            while self.predicted_type is None:
+                for _ in range(10):
+                    self.window.update()
+                    self.progress_bar.after(200)
+                    self.progress_bar.step(10)
+
+        Thread(target=parallel_load()).start()
 
 
 if __name__ == '__main__':
