@@ -1,4 +1,4 @@
-#import tensorflow.keras as tf
+# import tensorflow.keras as tf
 
 from know_your_witter.apiaccess import api
 
@@ -27,6 +27,6 @@ def guess_personality(username):
     guesser.structure_data()
     return "INTP"
 
-# if __name__ == '__main__':
-#     g = Guesser()
-#     g.structure_data()
+
+if __name__ == '__main__':
+    guess_personality("jani")
